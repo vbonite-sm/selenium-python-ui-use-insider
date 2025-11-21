@@ -1,0 +1,37 @@
+{
+  "HomePage": {
+    "accept_cookies_btn": ["css selector", "#wt-cli-accept-all-btn"],
+    "company_menu": ["xpath", "//a[contains(text(),'Company')]"],
+    "careers_link": ["xpath", "//a[contains(text(),'Careers')]"],
+    "page_title": ["css selector", "h1"]
+  },
+  "CareersPage": {
+    "locations_block": ["css selector", "section#career-our-location"],
+    "teams_block": ["css selector", "section#career-find-our-calling"],
+    "life_at_insider_block": ["xpath", "//h2[contains(text(), 'Life at Insider')]"],
+    "page_heading": ["css selector", ".category-title-media h1"]
+  },
+  "QACareersPage": {
+    "see_all_jobs_btn": ["xpath", "//a[contains(text(),'See all QA jobs')]"],
+    "location_filter": ["css selector", "#select2-filter-by-location-container"],
+    "location_dropdown_options": ["xpath", "//ul[@class='select2-results__options']//li"],
+    "location_option": ["xpath", "//ul[@class='select2-results__options']//li[contains(text(),'{location}')]"],
+    "department_filter": ["css selector", "#select2-filter-by-department-container"],
+    "department_dropdown_options": ["xpath", "//ul[@class='select2-results__options']//li"],
+    "department_option": ["xpath", "//ul[@class='select2-results__options']//li[contains(text(),'{department}')]"],
+    "job_list": ["css selector", ".position-list-item"],
+    "job_card_by_attributes": ["xpath", "//div[contains(@class, 'position-list-item') and @data-location='{data_location}' and @data-team='{data_team}']"],
+    "job_position": ["css selector", ".position-title"],
+    "job_department": ["css selector", ".position-department"],
+    "job_location": ["css selector", ".position-location"],
+    "view_role_btn": ["xpath", "//a[contains(text(),'View Role')]"],
+    "cookie_banner": ["css selector", "#cookie-law-info-bar"],
+    "cookie_accept_all_btn": ["css selector", "#wt-cli-accept-all-btn"],
+    "cookie_accept_btn": ["css selector", "#wt-cli-accept-btn"],
+    "cookie_banner_container": ["css selector", ".wt-cli-cookie-bar-container"]
+  },
+  "LeverPage": {
+    "application_form": ["css selector", ".posting-headline"],
+    "job_title": ["css selector", ".posting-headline h2"]
+  }
+}
