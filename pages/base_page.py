@@ -118,6 +118,10 @@ class BasePage(ABC):
         self.wait.until(lambda d: len(d.window_handles) > 1)
         windows = self.driver.window_handles
         self.driver.switch_to.window(windows[-1])
+        # Wait for new window to load
+        WebDriverWait(self.driver, 10).until(
+            lambda d: d.current_url != "about:blank" and d.current_url != ""
+        )
     
     @log_action
     def wait_for_element_and_click(self, locator: Tuple, timeout: int = None):

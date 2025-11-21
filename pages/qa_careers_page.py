@@ -1,6 +1,7 @@
 """QA Careers page with job filtering functionality"""
 import allure
 import logging
+import time
 from selenium.webdriver.common.by import By
 from pages.base_page import LoadableComponent
 from utils.decorators import allure_step, screenshot_on_failure
@@ -272,12 +273,23 @@ class QACareersPage(LoadableComponent):
 
         first_job_card = job_cards[0]
         
+        # Scroll job card into view
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", first_job_card)
+        time.sleep(1)
+        
         # Hover over the job card to reveal the View Role button
         self.hover_over_element(first_job_card)
+        time.sleep(1)  # Wait for hover animation
         
-        # Click the View Role button within that job card
+        # Find and click the View Role button using JavaScript (more reliable for Firefox)
         view_role_locator = self.get_locator("view_role_btn")
-        self.click(view_role_locator)
+        try:
+            # Try normal click first
+            self.wait_for_element_and_click(view_role_locator, timeout=5)
+        except:
+            # Fallback to JavaScript click if normal click fails
+            view_role_element = self.find_element(view_role_locator, timeout=5)
+            self.driver.execute_script("arguments[0].click();", view_role_element)
 
         # Switch to new tab/window
         self.switch_to_new_window()
